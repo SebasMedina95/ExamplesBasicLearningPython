@@ -146,6 +146,19 @@ while True:
         delete_product(id_to_delete)
         continue    
     
+    # Opción 6
+    if option == 6:
+        print("\n===> 📦 CANTIDAD DE PRODUCTOS EN EL CARRITO")
+        count_products = len(shopping_cart)
+        print(f"La cantidad de productos en el carrito es de: {count_products}")
+        
+    # Opción 7
+    if option == 7:
+        print("\n===> 📦 VACIAR TODO EL CARRITO")
+        shopping_cart.clear()
+        print("😊 Carrito vaciado correctamente")
+        continue
+    
     # Salir
     if option == 8:
         shopping_cart.clear()
