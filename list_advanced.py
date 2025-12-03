@@ -62,6 +62,32 @@ def get_product_by_id(id: str):
     if not band_control:
         print(f"😮 No se encontró el ID {id} !")
         
+    return
+
+# Eliminar producto por ID
+def delete_product(id: str):
+    search_id = id
+    band_control = False
+
+    try:
+        search_id = uuid.UUID(id)
+    except ValueError:
+        print("❌ UUID inválido.")
+        
+    for product in shopping_cart:
+        if (product.id == search_id):
+            print("🔎 Producto encontrado para eliminar !")
+            print(f"- {product.id} || Prod: {product.name}")
+            shopping_cart.remove(product)
+            print("🗑 Producto eliminado correctamente!")
+            band_control = True
+            break
+            
+    if not band_control:
+        print(f"😮 No se encontró el ID {id} !")
+
+    return
+        
 # Ciclo para trabajar la lógica
 while True:
 
@@ -70,8 +96,8 @@ while True:
     print("2. Buscar producto por ID")
     print("3. Mostrar la lista normal")
     print("4. Mostrar la lista ordenada")
-    print("6. Contar productos del carrito")
     print("5. Eliminar producto")
+    print("6. Contar productos del carrito")
     print("7. Vaciar el carrito")
     print("8. Salir")
 
@@ -113,6 +139,12 @@ while True:
         print("\n===> 📦 LISTADO DE PRODUCTOS ORDENADOS")
         view_products(True)
         continue
+    
+    # Opción 5
+    if option == 5:
+        id_to_delete = input("Proporcione el ID del producto que desea eliminar:  ")
+        delete_product(id_to_delete)
+        continue    
     
     # Salir
     if option == 8:
