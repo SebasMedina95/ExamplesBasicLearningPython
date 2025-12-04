@@ -80,3 +80,36 @@ print("=========================================================================
 # Trae los values
 print(users.values())
 
+print()
+print()
+print()
+
+# Caso de agregar
+new_user = {
+    "uuid": "2bc8df18-53ea-4326-ab9e-615c2ceb6e09",
+    "name": "Celeste Meneses Danuvio",
+    "email": "celeste.danuvio@example.com",
+    "charge": "Desarrollador UX",
+    "salary": 4100000
+}
+
+users.get("data").append(new_user)
+for user in users.get("data"):
+    print(user.get("name"), "-", user.get("charge"))
+
+# Caso de eliminar
+# El index se usa cuando necesitas modificar o eliminar un elemento de una lista accediéndolo por su posición dentro de la lista.
+# Con esto evitamos errores
+uuid_to_delete = "d55f1e8b-2ffe-4d33-b823-f96d87c5b531"
+
+for index, user in enumerate(users["data"]):
+    if user["uuid"] == uuid_to_delete:
+        del users["data"][index]
+        break
+
+print()
+print()
+print()
+
+for user in users.get("data"):
+    print(user.get("name"), "-", user.get("charge"))
